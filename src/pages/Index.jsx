@@ -1,18 +1,49 @@
-// Update this page (the content is just a fallback if you fail and example)
-// Use chakra-ui
-import { Container, Text, VStack } from "@chakra-ui/react";
+import { Box, Container, Flex, Heading, Link, Text, VStack, HStack, Spacer } from "@chakra-ui/react";
+import { FaTwitter, FaFacebook, FaLinkedin } from "react-icons/fa";
 
-// Example of using react-icons
-// import { FaRocket } from "react-icons/fa";
-// <IconButton aria-label="Add" icon={<FaRocket />} size="lg" />; // IconButton would also have to be imported from chakra
+const categories = [
+  { title: "General Discussion", description: "Talk about anything tech-related." },
+  { title: "Programming", description: "Discuss coding, algorithms, and best practices." },
+  { title: "Hardware", description: "Share insights on the latest hardware and gadgets." },
+  { title: "Networking", description: "Discuss networking technologies and solutions." },
+  { title: "Security", description: "Talk about cybersecurity, vulnerabilities, and protection." },
+];
 
 const Index = () => {
   return (
-    <Container centerContent maxW="container.md" height="100vh" display="flex" flexDirection="column" justifyContent="center" alignItems="center">
-      <VStack spacing={4}>
-        <Text fontSize="2xl">Your Blank Canvas</Text>
-        <Text>Chat with the agent to start making edits.</Text>
-      </VStack>
+    <Container maxW="container.xl" p={0}>
+      <Flex as="nav" bg="blue.800" color="white" p={4} align="center">
+        <Heading size="md">Tech Forum</Heading>
+        <Spacer />
+        <HStack spacing={4}>
+          <Link href="/">Home</Link>
+          <Link href="#categories">Categories</Link>
+          <Link href="#about">About</Link>
+        </HStack>
+      </Flex>
+
+      <Box as="main" p={4}>
+        <VStack spacing={8} align="stretch">
+          <Heading as="h2" size="xl" id="categories">Discussion Categories</Heading>
+          {categories.map((category, index) => (
+            <Box key={index} p={5} shadow="md" borderWidth="1px">
+              <Heading fontSize="xl">{category.title}</Heading>
+              <Text mt={4}>{category.description}</Text>
+            </Box>
+          ))}
+        </VStack>
+      </Box>
+
+      <Box as="footer" bg="gray.800" color="white" p={4} mt={8}>
+        <VStack spacing={4}>
+          <Text>Contact us at: contact@techforum.com</Text>
+          <HStack spacing={4}>
+            <Link href="https://twitter.com" isExternal><FaTwitter /></Link>
+            <Link href="https://facebook.com" isExternal><FaFacebook /></Link>
+            <Link href="https://linkedin.com" isExternal><FaLinkedin /></Link>
+          </HStack>
+        </VStack>
+      </Box>
     </Container>
   );
 };
